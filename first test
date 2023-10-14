@@ -1,0 +1,23 @@
+function telephoneCheck(str) {
+    
+    let myReg = (/\d/g); //this gets numbers from argument, and drops anything else
+    let phoneNumArr = str.match(myReg);
+    
+    
+    if(phoneNumArr.length == 10){
+        
+        return true;
+        
+    }else if(phoneNumArr.length == 11){
+        
+        if (phoneNumArr[0] == 1){
+            
+            return true;
+        }else{ 
+          return false;}
+          
+    }
+  return false;
+}
+
+telephoneCheck("555-555-5555");
