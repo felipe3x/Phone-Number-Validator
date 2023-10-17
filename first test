@@ -1,23 +1,31 @@
 function telephoneCheck(str) {
     
-    let myReg = (/\d/g); //this gets numbers from argument, and drops anything else
-    let phoneNumArr = str.match(myReg);
-    
-    
-    if(phoneNumArr.length == 10){
-        
-        return true;
-        
-    }else if(phoneNumArr.length == 11){
-        
-        if (phoneNumArr[0] == 1){
-            
-            return true;
-        }else{ 
-          return false;}
-          
-    }
-  return false;
+    let myReg10 = (/\d{10}/g);
+    let myReg12 = (/\d{3}[ -]\d{3}[ -]\d{4}/g);
+    let myReg13 = (/[\(]?\d{3}[\)]?\d{3}[- ]\d{4}/g);
+    let myReg14 = (/[\(]?\d{3}[\)]?[ ]\d{3}[-]?\d{4}/g);
+
+if(str.length<10){return false}
+//10 digit
+
+if (str.length == 10){
+     return myReg10.test(str);
+}if(str.length==11){return false;}
+//12 digit
+if (str.length == 12){
+     return myReg12.test(str);
+}
+//13 digit
+if (str.length == 13){
+     return myReg13.test(str);
+}
+//14 digit
+if(str.length == 14){
+    return myReg14.test(str)
 }
 
-telephoneCheck("555-555-5555");
+if(str.length>14){return false;}
+
+}
+
+console.log(telephoneCheck("555-555-5555"));
